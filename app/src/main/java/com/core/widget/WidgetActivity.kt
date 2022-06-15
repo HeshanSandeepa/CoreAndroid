@@ -50,7 +50,7 @@ class WidgetActivity : AppCompatActivity() {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_widget_main)
+    setContentView(R.layout.widget_activity_widget_main)
     gramsValue = findViewById<TextView?>(R.id.grams)
     refreshTodayLabel()
     if (intent != null && intent.action == Constants.ADD_COFFEE_INTENT) {

@@ -18,7 +18,7 @@ class CoffeeLoggerWidgetConfigureActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_coffee_logger_widget_configure)
+        setContentView(R.layout.widget_activity_coffee_logger_widget_configure)
 
         findViewById<View>(R.id.add_button).setOnClickListener(onClickListener)
 

@@ -6,7 +6,6 @@ import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import com.heshan.androidcore.MainActivity
 import com.heshan.androidcore.R
 
 /**
@@ -63,7 +62,7 @@ class CoffeeLoggerWidget : AppWidgetProvider() {
             //1
 
             //2
-            val views = RemoteViews(context.packageName, R.layout.coffee_logger_widget)
+            val views = RemoteViews(context.packageName, R.layout.widget_coffee_logger_widget)
             //3
             views.setTextViewText(R.id.appwidget_text, widgetText)
             //4

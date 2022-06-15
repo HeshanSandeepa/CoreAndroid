@@ -31,7 +31,7 @@
         </receiver>
 
         <activity
-            android:name="com.core.widget.WidgetActivity"
+            android:name="com.heshan.androidcore.MainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidCore.NoActionBar">
@@ -41,6 +41,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name="com.core.animation_transitions.DetailActivity" />
     </application>
 
 </manifest>
