@@ -17,7 +17,7 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.example.android.activityscenetransitionbasic.SquareFrameLayout
+    <com.core.animation_transitions.SquareFrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -28,7 +28,7 @@
             android:contentDescription="@null"
             android:scaleType="centerCrop" />
 
-    </com.example.android.activityscenetransitionbasic.SquareFrameLayout>
+    </com.core.animation_transitions.SquareFrameLayout>
 
     <TextView
         android:id="@+id/textview_name"
