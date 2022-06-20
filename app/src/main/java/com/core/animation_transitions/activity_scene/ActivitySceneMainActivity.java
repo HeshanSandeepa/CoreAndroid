@@ -1,4 +1,4 @@
-package com.core.animation_transitions;
+package com.core.animation_transitions.activity_scene;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,7 +19,7 @@ import androidx.core.app.ActivityOptionsCompat;
 import com.heshan.androidcore.R;
 import com.squareup.picasso.Picasso;
 
-public class AnimationMainActivity extends AppCompatActivity {
+public class ActivitySceneMainActivity extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,7 @@ public class AnimationMainActivity extends AppCompatActivity {
             Item item = (Item) adapterView.getItemAtPosition(position);
 
             // Construct an Intent as normal
-            Intent intent = new Intent(AnimationMainActivity.this, DetailActivity.class);
+            Intent intent = new Intent(ActivitySceneMainActivity.this, DetailActivity.class);
             intent.putExtra(DetailActivity.EXTRA_PARAM_ID, item.getId());
 
             // BEGIN_INCLUDE(start_activity)
@@ -56,7 +56,7 @@ public class AnimationMainActivity extends AppCompatActivity {
              */
             @SuppressWarnings("unchecked")
             ActivityOptionsCompat activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    AnimationMainActivity.this,
+                    ActivitySceneMainActivity.this,
 
                     // Now we provide a list of Pair items which contain the view we can transitioning
                     // from, and the name of the view it is transitioning to, in the launched activity
@@ -66,7 +66,7 @@ public class AnimationMainActivity extends AppCompatActivity {
                             DetailActivity.VIEW_NAME_HEADER_TITLE));
 
             // Now we can start the Activity, providing the activity options as a bundle
-            ActivityCompat.startActivity(AnimationMainActivity.this, intent, activityOptions.toBundle());
+            ActivityCompat.startActivity(ActivitySceneMainActivity.this, intent, activityOptions.toBundle());
             // END_INCLUDE(start_activity)
         }
     };

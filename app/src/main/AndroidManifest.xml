@@ -34,7 +34,7 @@
         </receiver>
 
         <activity
-            android:name="com.core.animation_transitions.AnimationMainActivity"
+            android:name="com.core.animation_transitions.base.BaseActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidCore.NoActionBar">
@@ -45,7 +45,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name="com.core.animation_transitions.DetailActivity" />
+        <activity android:name="com.core.animation_transitions.activity_scene.DetailActivity" />
     </application>
 
 </manifest>

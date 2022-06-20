@@ -1,4 +1,4 @@
-package com.core.animation_transitions;
+package com.core.animation_transitions.activity_scene;
 
 
 

@@ -1,6 +1,5 @@
-package com.core.animation_transitions;
+package com.core.animation_transitions.activity_scene;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.transition.Transition;
 import android.widget.ImageView;
