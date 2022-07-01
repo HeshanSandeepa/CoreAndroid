@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/drawable/background_overlimit.xml" value="0.159" />
         <entry key="app/src/main/res/drawable/button_background.xml" value="0.159" />
         <entry key="app/src/main/res/drawable/ic_hourglass_animated.xml" value="0.189" />
+        <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.189" />
         <entry key="app/src/main/res/layout/activity_coffee_logger_widget_configure.xml" value="0.309375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_scene_transition_details.xml" value="0.3390625" />
@@ -24,11 +25,16 @@
         <entry key="app/src/main/res/layout/base_scene3.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/coffee_logger_widget.xml" value="0.309375" />
         <entry key="app/src/main/res/layout/custom_fragment_transition.xml" value="0.3390625" />
+        <entry key="app/src/main/res/layout/drawable_animated_fragment.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/drawable_demo_list_item.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/drawable_home_fragment.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/drawable_main_activity.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/drawable_seekable_fragment.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/grid_detail_transition.xml" value="0.325" />
+        <entry key="app/src/main/res/layout/grid_fragment_grid.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/grid_fragment_image.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/grid_fragment_pager.xml" value="0.37604166666666666" />
+        <entry key="app/src/main/res/layout/grid_image_card.xml" value="0.37604166666666666" />
         <entry key="app/src/main/res/layout/scene3.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/widget_activity_coffee_logger_widget_configure.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/widget_activity_main.xml" value="0.3390625" />
