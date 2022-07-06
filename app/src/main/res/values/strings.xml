@@ -63,4 +63,15 @@
     <string name="stop">Stop</string>
     <string name="pause">Pause</string>
     <string name="resume">Resume</string>
+
+    <!--interpolate-->
+    <string name="animation_duration">Duration: %1$d ms</string>
+    <string name="interpolator">Interpolator:</string>
+    <string name="animate">Animate!</string>
+    <string-array name="interpolator_names">
+        <item>Linear</item>
+        <item>Fast Out Linear In</item>
+        <item>Fast Out Slow In</item>
+        <item>Linear Out Slow In</item>
+    </string-array>
 </resources>

@@ -34,7 +34,7 @@
         </receiver>
 
         <activity
-            android:name="com.core.animation_transitions.grid_to_pager.GridMainActivity"
+            android:name="com.core.animation_transitions.interpolator.InterpolatorMainActivity"
             android:exported="true"
             android:label="@string/app_name"
             android:theme="@style/Theme.AndroidCore.NoActionBar">
