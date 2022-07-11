@@ -1,4 +1,6 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+
 
     <style name="Widget.AndroidCore.AppWidget.Container" parent="android:Widget">
         <item name="android:id">@android:id/background</item>
@@ -22,5 +24,25 @@
         <item name="android:shadowColor">#7F000000</item>
         <item name="android:shadowDy">-3.5</item>
         <item name="android:shadowRadius">2</item>
+    </style>
+
+    <style name="Theme.AndroidCore.CardUi">
+        <item name="android:windowBackground">@color/card_background</item>
+    </style>
+
+    <style name="Theme.AndroidCore.Translucent">
+        <item name="android:statusBarColor" tools:ignore="NewApi">@color/dark_scrim</item>
+    </style>
+
+    <style name="Widget.Motion.ImageView.Icon" parent="android:Widget">
+        <item name="android:padding">4dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:tint">?attr/colorPrimary</item>
+    </style>
+
+    <style name="Widget.Motion.TextView.Api" parent="Widget.MaterialComponents.TextView">
+        <item name="android:background">@drawable/api_background</item>
+        <item name="android:textAppearance">?attr/textAppearanceListItemSecondary</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 </resources>
