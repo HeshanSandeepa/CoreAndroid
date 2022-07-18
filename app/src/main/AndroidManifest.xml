@@ -43,7 +43,7 @@
         <activity android:name="com.core.animation_transitions.activity_scene.DetailActivity" />
 
         <activity
-            android:name="com.core.animation_transitions.motion.MotionMainActivity"
+            android:name="com.core.images_graphics.CustomShapeActivity"
             android:exported="true"
             android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>

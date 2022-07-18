@@ -91,4 +91,5 @@
     <string name="tap_fab">Tap on the floating action button to expand it.</string>
     <string name="you_selected">You selected %s.</string>
     <string name="refresh">Refresh</string>
+    <string name="my_view_desc">Custom Shape Description</string>
 </resources>
