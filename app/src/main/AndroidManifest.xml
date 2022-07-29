@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.heshan.androidcore">
 
-
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,6 +11,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidCore">
+        <activity
+            android:name="com.core.images_graphics.PaletteActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+
         <activity
             android:name="com.core.widget.CoffeeLoggerWidgetConfigureActivity"
             android:exported="false" />
@@ -37,28 +48,22 @@
             android:name="com.core.animation_transitions.interpolator.InterpolatorMainActivity"
             android:exported="true"
             android:label="@string/app_name"
-            android:theme="@style/Theme.AndroidCore.NoActionBar">
-        </activity>
-
+            android:theme="@style/Theme.AndroidCore.NoActionBar"></activity>
         <activity android:name="com.core.animation_transitions.activity_scene.DetailActivity" />
-
         <activity
             android:name="com.core.images_graphics.CustomShapeActivity"
             android:exported="true"
             android:theme="@style/Theme.AndroidCore.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
+        </activity>
         <activity
             android:name="com.core.animation_transitions.motion.demo.dissolve.DissolveActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/dissolve_label">
+            android:label="@string/dissolve_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -69,14 +74,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/dissolve_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.fadethrough.FadeThroughActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/fade_through_label">
+            android:label="@string/fade_through_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -87,14 +92,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/fade_through_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.fabtransformation.FabTransformationActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/fab_transformation_label">
+            android:label="@string/fab_transformation_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -105,14 +110,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/fab_transformation_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.reorder.ReorderActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/reorder_label">
+            android:label="@string/reorder_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -123,14 +128,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/reorder_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.stagger.StaggerActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/stagger_label">
+            android:label="@string/stagger_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -141,14 +146,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/stagger_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.loading.LoadingActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/loading_label">
+            android:label="@string/loading_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -159,14 +164,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/loading_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.oscillation.OscillationActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/oscillation_label">
+            android:label="@string/oscillation_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -177,14 +182,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/oscillation_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.sharedelement.SharedElementActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/shared_element_label">
+            android:label="@string/shared_element_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 
@@ -195,14 +200,14 @@
                 android:name="com.example.android.motion.demo.APIS"
                 android:resource="@array/shared_element_apis" />
         </activity>
-
         <activity
             android:name="com.core.animation_transitions.motion.demo.containertransform.ContainerTransformActivity"
             android:exported="true"
-            android:theme="@style/Theme.AndroidCore.NoActionBar"
-            android:label="@string/container_transform_label">
+            android:label="@string/container_transform_label"
+            android:theme="@style/Theme.AndroidCore.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="com.example.android.motion.intent.category.DEMO" />
             </intent-filter>
 

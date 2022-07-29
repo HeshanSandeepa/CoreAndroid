@@ -56,4 +56,5 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
     implementation "androidx.vectordrawable:vectordrawable-seekable:1.0.0-beta01"
     implementation "com.github.bumptech.glide:glide:4.10.0"
+    implementation 'androidx.palette:palette-ktx:1.0.0'
 }
