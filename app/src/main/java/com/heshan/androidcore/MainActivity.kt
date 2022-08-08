@@ -4,19 +4,27 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.ui.AppBarConfiguration
-import com.heshan.androidcore.databinding.WidgetActivityWidgetMainBinding
+import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.heshan.androidcore.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: WidgetActivityWidgetMainBinding
+    private lateinit var binding: ActivityMainBinding
+
+    val  coreTopics: List<CoreTopic> = listOf(CoreTopic(Topic.APP_DATA_FILES, "AppData & Files"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = WidgetActivityWidgetMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        val recyclerView = binding.mainRecycleView
+        val coreTopics = coreTopics
+        val coreTopicAdapter = CoreTopicAdapter(coreTopics)
+
+        recyclerView.adapter = coreTopicAdapter
+        recyclerView.layoutManager  =LinearLayoutManager(this)
+        recyclerView.setHasFixedSize(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -35,9 +43,5 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-//    override fun onSupportNavigateUp(): Boolean {
-//        val navController = findNavController(R.id.nav_host_fragment_content_main)
-//        return navController.navigateUp(appBarConfiguration)
-//                || super.onSupportNavigateUp()
-//    }
+
 }
