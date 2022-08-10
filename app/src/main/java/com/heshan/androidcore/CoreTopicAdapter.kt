@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.heshan.androidcore.databinding.ActivityMainTopicBinding
 
-class CoreTopicAdapter(private val coreTopics: List<CoreTopic>):
+class CoreTopicAdapter(private val coreTopics: List<CoreTopic>, private val onClickListener: CoreTopicClickListener):
     RecyclerView.Adapter<CoreTopicViewHolder>() {
 
     private lateinit var binding: ActivityMainTopicBinding
@@ -18,7 +18,8 @@ class CoreTopicAdapter(private val coreTopics: List<CoreTopic>):
 
     override fun onBindViewHolder(holder: CoreTopicViewHolder, position: Int) {
         val coreTopic = coreTopics[position]
-        holder.binding(coreTopic)
+        holder.binding(coreTopic, onClickListener)
+
     }
 
     override fun getItemCount(): Int {
