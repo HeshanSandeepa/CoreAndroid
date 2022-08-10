@@ -1,6 +1,7 @@
 package com.heshan.androidcore
 
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
@@ -8,11 +9,14 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.heshan.androidcore.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), CoreTopicClickListener  {
 
     private lateinit var binding: ActivityMainBinding
 
-    val  coreTopics: List<CoreTopic> = listOf(CoreTopic(Topic.APP_DATA_FILES, "AppData & Files"))
+    private val  coreTopics: List<CoreTopic> = listOf(
+        CoreTopic(Topic.APP_DATA_FILES, "AppData & Files"),
+        CoreTopic(Topic.BACKGROUND_TASKS, "Background Tasks"),
+        CoreTopic(Topic.SERVICES, "Services"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,10 +24,10 @@ class MainActivity : AppCompatActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val recyclerView = binding.mainRecycleView
         val coreTopics = coreTopics
-        val coreTopicAdapter = CoreTopicAdapter(coreTopics)
+        val coreTopicAdapter = CoreTopicAdapter(coreTopics, this)
 
         recyclerView.adapter = coreTopicAdapter
-        recyclerView.layoutManager  =LinearLayoutManager(this)
+        recyclerView.layoutManager  = LinearLayoutManager(this)
         recyclerView.setHasFixedSize(true)
     }
 
@@ -40,6 +44,12 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.action_settings -> true
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    override fun onTopicClicked(topic: CoreTopic?) {
+        if (topic != null) {
+            Log.e("onTopicClicked ", topic.title)
         }
     }
 

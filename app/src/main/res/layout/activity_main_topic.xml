@@ -5,27 +5,36 @@
 
     <data>
         <variable
-            name="CoreTopic"
+            name="coreTopic"
             type="com.heshan.androidcore.CoreTopic" />
+
+        <variable
+            name="topicClickListener"
+            type="com.heshan.androidcore.CoreTopicClickListener" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+
         tools:context="com.core.images_graphics.MainActivity">
 
         <TextView
             android:id="@+id/title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="@{ () -> topicClickListener.onTopicClicked(coreTopic)}"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
-            android:textSize="18sp"
-            android:layout_marginBottom="16dp"
+            android:fontFamily="monospace"
             android:gravity="center|start"
-            android:text="@string/app_name"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@{coreTopic.title}"
+
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="normal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
