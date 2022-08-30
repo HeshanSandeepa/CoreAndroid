@@ -2,8 +2,11 @@
 
 
 buildscript {
+    ext.kotlinVersion = '1.5.31'
+
     repositories {
         google()
+        jcenter()
     }
     dependencies {
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:2.5.0")

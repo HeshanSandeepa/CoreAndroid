@@ -53,5 +53,10 @@ class MainActivity : AppCompatActivity(), CoreTopicClickListener  {
         }
     }
 
+    override fun onLowMemory() {
+        super.onLowMemory()
+        Log.e("onLowMemory ", " Memory Is Running Out")
+    }
+
 
 }
