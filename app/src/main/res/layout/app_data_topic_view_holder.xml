@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="appDataTopic"
+            type="com.core.app_data_and_files.AppDataAndFileTopic" />
+
+        <variable
+            name="appDataTopicClickListener"
+            type="com.core.app_data_and_files.AppDataAndFileClickListener" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        tools:context="com.core.images_graphics.MainActivity">
+
+        <TextView
+            android:id="@+id/title"
+            android:background="@android:color/holo_blue_bright"
+            android:onClick="@{ () -> appDataTopicClickListener.onAppDataTopicClicked(appDataTopic)}"
+            android:layout_width="match_parent"
+            android:layout_height="66dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="monospace"
+            android:gravity="center|start"
+            android:text="@{appDataTopic.title}"
+
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,6 +1,5 @@
-package com.heshan.androidcore
+package com.core.app_data_and_files
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -8,25 +7,24 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.core.app_data_and_files.AppSpecificStorageActivity
+import com.heshan.androidcore.R
 import com.heshan.androidcore.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity(), CoreTopicClickListener  {
+class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListener  {
 
     private lateinit var binding: ActivityMainBinding
 
-    private val  coreTopics: List<CoreTopic> = listOf(
-        CoreTopic(Topic.APP_DATA_FILES, "AppData & Files"),
-        CoreTopic(Topic.BACKGROUND_TASKS, "Background Tasks"),
-        CoreTopic(Topic.SERVICES, "Services"))
+    private val  dataTopics: List<AppDataAndFileTopic> = listOf(
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FOLDER_CREATE, "Create Internal Folder"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE, "Background Tasks"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_WRITE, "Services"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val recyclerView = binding.mainRecycleView
-        val coreTopics = coreTopics
-        val coreTopicAdapter = CoreTopicAdapter(coreTopics, this)
+        val coreTopicAdapter = AppDataAndFileTopicAdapter(dataTopics, this)
 
         recyclerView.adapter = coreTopicAdapter
         recyclerView.layoutManager  = LinearLayoutManager(this)
@@ -49,20 +47,17 @@ class MainActivity : AppCompatActivity(), CoreTopicClickListener  {
         }
     }
 
-    override fun onTopicClicked(topic: CoreTopic?) {
-        if (topic != null) {
 
-            if (topic.topic == Topic.APP_DATA_FILES) {
-                val intent = Intent(applicationContext, AppSpecificStorageActivity::class.java)
-                startActivity(intent)
-            }
-            Log.e("onTopicClicked ", topic.title)
-        }
-    }
 
     override fun onLowMemory() {
         super.onLowMemory()
         Log.e("onLowMemory ", " Memory Is Running Out")
+    }
+
+    override fun onAppDataTopicClicked(appDataAndFileTopic: AppDataAndFileTopic?) {
+        if (appDataAndFileTopic != null) {
+            Log.e("onAppDataTopicClicked ", appDataAndFileTopic.title)
+        }
     }
 
 
