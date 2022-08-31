@@ -15,6 +15,7 @@
         <entry key="app/src/main/res/drawable/ic_hourglass_animated.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.189" />
         <entry key="app/src/main/res/drawable/ic_sample_640_426.xml" value="0.1885" />
+        <entry key="app/src/main/res/layout/activity_app_data_topic.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/activity_coffee_logger_widget_configure.xml" value="0.309375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main_topic.xml" value="0.33697916666666666" />

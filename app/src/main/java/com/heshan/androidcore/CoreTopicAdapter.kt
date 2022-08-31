@@ -3,15 +3,15 @@ package com.heshan.androidcore
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.heshan.androidcore.databinding.ActivityMainTopicBinding
+import com.heshan.androidcore.databinding.CoreTopicViewHolderViewBinding
 
 class CoreTopicAdapter(private val coreTopics: List<CoreTopic>, private val onClickListener: CoreTopicClickListener):
     RecyclerView.Adapter<CoreTopicViewHolder>() {
 
-    private lateinit var binding: ActivityMainTopicBinding
+    private lateinit var binding: CoreTopicViewHolderViewBinding
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CoreTopicViewHolder {
-        binding = ActivityMainTopicBinding
+        binding = CoreTopicViewHolderViewBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
         return CoreTopicViewHolder(binding)
     }

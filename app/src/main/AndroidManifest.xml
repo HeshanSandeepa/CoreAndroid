@@ -25,6 +25,11 @@
 
 
         <activity
+            android:name="com.core.app_data_and_files.AppSpecificStorageActivity">
+        </activity>
+
+
+        <activity
             android:name="com.core.widget.CoffeeLoggerWidgetConfigureActivity"
             android:exported="false" />
 
