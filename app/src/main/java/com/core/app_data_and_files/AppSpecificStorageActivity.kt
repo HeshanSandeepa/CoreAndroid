@@ -1,14 +1,17 @@
 package com.core.app_data_and_files
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.heshan.androidcore.R
 import com.heshan.androidcore.databinding.ActivityMainBinding
+import java.io.File
 
 class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListener  {
 
@@ -16,8 +19,8 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
 
     private val  dataTopics: List<AppDataAndFileTopic> = listOf(
         AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FOLDER_CREATE, "Create Internal Folder"),
-        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE, "Background Tasks"),
-        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_WRITE, "Services"))
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE, "Create File In Internal Folder"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_WRITE, "Write In to File"))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,8 +50,6 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         }
     }
 
-
-
     override fun onLowMemory() {
         super.onLowMemory()
         Log.e("onLowMemory ", " Memory Is Running Out")
@@ -56,9 +57,44 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
 
     override fun onAppDataTopicClicked(appDataAndFileTopic: AppDataAndFileTopic?) {
         if (appDataAndFileTopic != null) {
-            Log.e("onAppDataTopicClicked ", appDataAndFileTopic.title)
+            when(appDataAndFileTopic.topic) {
+                FileTopic.APP_SPECIFIC_FOLDER_CREATE -> createInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_CREATE -> createFileInInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_WRITE -> writeInToLocalFile()
+                else -> {
+                    Log.e(this.classLoader.toString(), "Some thing wrong")
+                }
+            }
         }
     }
 
+    private fun createInternalFolder() {
+        val internalFolder = File(this.filesDir, "INTERNAL_FOLDER")
+        if (!internalFolder.exists()) {
+            if(internalFolder.mkdir()) {
+                Toast.makeText(this, "Folder Created", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
+    private fun createFileInInternalFolder() {
+        val internalFolderPath = this.filesDir.path + "/INTERNAL_FOLDER"
+        val fileName = File(internalFolderPath, "internalFile.txt")
+        if (!fileName.exists()) {
+            if(fileName.createNewFile()) {
+                Toast.makeText(this, "File Created", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun writeInToLocalFile() {
+        val internalFolderPath = this.filesDir.path + "/INTERNAL_FOLDER"
+        val fileName = File(internalFolderPath, "internalFile.txt")
+        if (fileName.exists()) {
+            this.openFileOutput(fileName.canonicalPath, Context.MODE_PRIVATE).use {
+                it.write("Hello File".toByteArray())
+                Toast.makeText(this, "File Updated", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
