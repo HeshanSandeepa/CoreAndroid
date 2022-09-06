@@ -5,7 +5,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.heshan.androidcore.databinding.AppDataTopicViewHolderBinding
 
-class AppDataAndFileTopicAdapter(private val coreTopics: List<AppDataAndFileTopic>, private val onClickListener: AppDataAndFileClickListener):
+class AppDataAndFileTopicAdapter(private val coreTopics: List<AppDataAndFileTopic>,
+                                 private val onClickListener: AppDataAndFileClickListener):
     RecyclerView.Adapter<AppDataAndFileTopicViewHolder>() {
 
     private lateinit var binding: AppDataTopicViewHolderBinding

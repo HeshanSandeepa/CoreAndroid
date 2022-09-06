@@ -25,6 +25,7 @@
         <entry key="app/src/main/res/layout/activity_scene_transition_grid_item.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/activity_widget_main.xml" value="0.25" />
         <entry key="app/src/main/res/layout/animated_fragment.xml" value="0.3390625" />
+        <entry key="app/src/main/res/layout/app_data_topic_view_holder.xml" value="0.33697916666666666" />
         <entry key="app/src/main/res/layout/base_activity_basic_transition.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/base_activity_main.xml" value="0.3390625" />
         <entry key="app/src/main/res/layout/base_fragment_basic_transition.xml" value="0.3390625" />
