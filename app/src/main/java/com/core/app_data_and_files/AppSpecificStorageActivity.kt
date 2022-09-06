@@ -19,8 +19,13 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
 
     private val  dataTopics: List<AppDataAndFileTopic> = listOf(
         AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FOLDER_CREATE, "Create Internal Folder"),
-        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE, "Create File In Internal Folder"),
-        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_WRITE, "Write In to File"))
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE_AND_WRITE, "Create & Write Internal File"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_AND_READ, "Read Internal Folder"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_CREATE_IN_FOLDER, "Create Internal Internal Folder"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_WRITE_IN_FOLDER, "Write Internal Internal File"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_READ_IN_FOLDER, "Read Internal Internal File"),
+        AppDataAndFileTopic(FileTopic.APP_SPECIFIC_FILE_LIST, "Internal folder file count"))
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,8 +64,12 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         if (appDataAndFileTopic != null) {
             when(appDataAndFileTopic.topic) {
                 FileTopic.APP_SPECIFIC_FOLDER_CREATE -> createInternalFolder()
-                FileTopic.APP_SPECIFIC_FILE_CREATE -> createFileInInternalFolder()
-                FileTopic.APP_SPECIFIC_FILE_WRITE -> writeInToLocalFile()
+                FileTopic.APP_SPECIFIC_FILE_CREATE_AND_WRITE -> createFileAndWriteInInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_AND_READ, -> createFileAndReadInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_CREATE_IN_FOLDER -> createFileInInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_WRITE_IN_FOLDER -> writeInFileInFolderInInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_READ_IN_FOLDER -> readInFileInFolderInInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_LIST -> fileListInInternalFolder()
                 else -> {
                     Log.e(this.classLoader.toString(), "Some thing wrong")
                 }
@@ -77,6 +86,28 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         }
     }
 
+    private fun createFileAndWriteInInternalFolder() {
+        val fileName = File(this.filesDir.path, "internalFile.txt")
+        if (fileName.exists()) {
+            this.openFileOutput("internalFile.txt", Context.MODE_PRIVATE).use {
+                it.write("Hello File".toByteArray())
+                Toast.makeText(this, "File Updated", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun createFileAndReadInternalFolder() {
+        val fileName = File( this.filesDir.path, "internalFile.txt")
+        if (fileName.exists()) {
+            this.openFileInput("internalFile.txt").use {
+                var text = it.bufferedReader().use {
+                    it.readText();
+                }
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
     private fun createFileInInternalFolder() {
         val internalFolderPath = this.filesDir.path + "/INTERNAL_FOLDER"
         val fileName = File(internalFolderPath, "internalFile.txt")
@@ -87,14 +118,38 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         }
     }
 
-    private fun writeInToLocalFile() {
+    private fun writeInFileInFolderInInternalFolder() {
         val internalFolderPath = this.filesDir.path + "/INTERNAL_FOLDER"
         val fileName = File(internalFolderPath, "internalFile.txt")
         if (fileName.exists()) {
-            this.openFileOutput(fileName.canonicalPath, Context.MODE_PRIVATE).use {
+            this.openFileOutput("internalFile.txt", Context.MODE_PRIVATE).use {
                 it.write("Hello File".toByteArray())
                 Toast.makeText(this, "File Updated", Toast.LENGTH_SHORT).show()
             }
         }
     }
+
+    private fun readInFileInFolderInInternalFolder() {
+        val internalFolderPath = this.filesDir.path + "/INTERNAL_FOLDER"
+        val fileName = File( internalFolderPath, "internalFile.txt")
+        if (fileName.exists()) {
+            this.openFileInput(fileName.name).use {
+                var text = it.bufferedReader().use {
+                    it.readText();
+                }
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun fileListInInternalFolder() {
+        var names: String = ""
+        var files: Array<String> = this.fileList()
+        for (file in files) {
+            names = names + " - " + file
+        }
+        Toast.makeText(this, names, Toast.LENGTH_SHORT).show()
+    }
+
+
 }
