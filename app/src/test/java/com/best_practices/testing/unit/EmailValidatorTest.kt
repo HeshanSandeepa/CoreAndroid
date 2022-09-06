@@ -8,7 +8,7 @@ import org.junit.Test
 internal class EmailValidatorTest {
 
     @Test
-    fun validatedEmail() {
+    fun emailValidator_CorrectEmailSimple_ReturnsTrue() {
         Assert.assertTrue(EmailValidator.validatedEmail("sampleemail"))
     }
 }
