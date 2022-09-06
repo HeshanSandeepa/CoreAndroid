@@ -1,5 +1,6 @@
-package com.best_practices.testing
+package com.best_practices.testing.unit
 
+import com.best_practices.testing.EmailValidator
 import org.junit.Assert
 import org.junit.Test
 
