@@ -9,6 +9,10 @@ enum class FileTopic {
     APP_SPECIFIC_FILE_WRITE_IN_FOLDER,
     APP_SPECIFIC_FILE_READ_IN_FOLDER,
     APP_SPECIFIC_FILE_LIST,
-
+    CACHE_QUOTA,
+    CACHE_CREATE_FILE_WRITE,
+    CACHE_DELETE_FILE,
+    EXTERNAL_AVAILABLE,
+    EXTERNAL_STORAGE_COUNT,
 }
 data class AppDataAndFileTopic( val topic: FileTopic, val title: String)
