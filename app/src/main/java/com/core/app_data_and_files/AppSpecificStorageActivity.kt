@@ -31,7 +31,11 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         AppDataAndFileTopic(FileTopic.CACHE_CREATE_FILE_WRITE, "Create a file on  Cache"),
         AppDataAndFileTopic(FileTopic.CACHE_DELETE_FILE, "Delete a file From Cache"),
         AppDataAndFileTopic(FileTopic.EXTERNAL_AVAILABLE, "Is External Available"),
-        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_COUNT, "Check Number of External Storages"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_SPACE_COUNT, "Check Number of External Storages"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_FILE_COUNT, "External Directory File Count"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_CREATE_FOLDER, "External Directory Folder Create"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_WRITE_FILE_IN_FOLDER, "External Directory File Write"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_READ_FILE_IN_FOLDER, "External Directory File Read"),
 
 
 
@@ -85,7 +89,11 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
                 FileTopic.CACHE_CREATE_FILE_WRITE -> createFileOnCache()
                 FileTopic.CACHE_DELETE_FILE -> deleteCacheFile()
                 FileTopic.EXTERNAL_AVAILABLE -> isExternalMounted()
-                FileTopic.EXTERNAL_STORAGE_COUNT -> checkNumberOfExternalStorages()
+                FileTopic.EXTERNAL_STORAGE_SPACE_COUNT -> checkNumberOfExternalStorages()
+                FileTopic.EXTERNAL_STORAGE_FILE_COUNT -> externalDirectoryFileList()
+                FileTopic.EXTERNAL_STORAGE_CREATE_FOLDER -> externalDirectoryCreateFolder()
+                FileTopic.EXTERNAL_STORAGE_WRITE_FILE_IN_FOLDER -> externalDirectoryCreateAndWriteFile()
+                FileTopic.EXTERNAL_STORAGE_READ_FILE_IN_FOLDER -> externalDirectoryReadFile()
                 else -> {
                     Log.e(this.classLoader.toString(), "Some thing wrong")
                 }
@@ -175,9 +183,6 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
 
     private fun createFileOnCache() {
 
-
-
-
 //        File.createTempFile("TEMP_FILE.txt", null, this.cacheDir)
 //        val cacheFile = File(this.cacheDir, "TEMP_FILE.txt").us
 //        if (cacheFile.exists()). {
@@ -218,10 +223,65 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         for (volume in externalStorageVolumes) {
             Log.e("Volume  -    ", volume.absolutePath)
         }
-
         Toast.makeText(this, "Number of External Devices are :  ${externalStorageVolumes.size}", Toast.LENGTH_SHORT).show()
-
     }
 
+    private fun externalDirectoryFileList() {
+        val files: Array<out File> = ContextCompat.getExternalFilesDirs(applicationContext, null)
+        for (file in files) {
+            Log.e("EXTERNAL FILES & FOLDERS  ", file.absolutePath)
+        }
+        Toast.makeText(this, "Done", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun externalDirectoryCreateFolder() {
+        val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+        if (!externalFolder.exists()) {
+            if(externalFolder.mkdir()) {
+                Toast.makeText(this, "EXTERNAL_FOLDER Created", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun externalDirectoryCreateAndWriteFile() {
+//        val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+//        val fileName = File(externalFolder, "externalFile.txt")
+//        if (!fileName.exists()) {
+//            if(fileName.createNewFile()) {
+//                if (fileName.exists()) {
+//                    this.openFileOutput("externalFile.txt", Context.MODE_PRIVATE).use {
+//                        it.write("Hello External File".toByteArray())
+//                        Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
+//                    }
+//                }
+//            }
+//        }
+
+        //val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+        val fileName = File(this.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "externalFile.txt")
+        if (!fileName.exists()) {
+            if(fileName.createNewFile()) {
+                if (fileName.exists()) {
+                    this.openFileOutput(fileName.name, Context.MODE_PRIVATE).use {
+                        it.write("Hello External File".toByteArray())
+                        Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
+        }
+    }
+
+    private fun externalDirectoryReadFile() {
+        val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+        val fileName = File(externalFolder, "externalFile.txt")
+        if (fileName.exists()) {
+            this.openFileInput(fileName.name).use { it ->
+                val text = it.bufferedReader().use {
+                    it.readText();
+                }
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 
 }
