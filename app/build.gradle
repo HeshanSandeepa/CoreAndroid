@@ -82,8 +82,10 @@ dependencies {
     androidTestImplementation("androidx.test:core-ktx:1.4.0")
     androidTestImplementation( "androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.3.0'
-    implementation 'androidx.test.espresso:espresso-idling-resource:3.3.0'
-    androidTestImplementation( "androidx.test.espresso.idling:idling-concurrent:3.5.0")
+    implementation "androidx.test.espresso.idling:idling-concurrent:3.5.0-alpha04"
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.3.0'
+    implementation 'androidx.test.espresso:espresso-idling-resource:3.5.0-alpha06'
+    androidTestImplementation 'androidx.test.espresso:espresso-idling-resource:3.3.0'
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
@@ -93,3 +95,6 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.4.0")
 
 }
+
+
+//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
