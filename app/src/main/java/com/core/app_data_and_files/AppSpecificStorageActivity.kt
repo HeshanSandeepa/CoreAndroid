@@ -244,31 +244,38 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
     }
 
     private fun externalDirectoryCreateAndWriteFile() {
-//        val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
-//        val fileName = File(externalFolder, "externalFile.txt")
+        try {
+            val content = "this si external file  written on devbcoe"
+            //val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+            val fileName = File(applicationContext.getExternalFilesDir("MYFI"), "externalFile.txt")
+            // if (!fileName.exists()) {
+            //if(fileName.createNewFile()) {
+            if (fileName.exists()) {
+                this.openFileOutput("externalFile.txt", Context.MODE_PRIVATE).use {
+                    it.write(content.toByteArray())
+                    it.close()
+                    Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
+                }
+            }
+            // }
+            //   }
+
+//        //val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
+//        val fileName = File(this.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "externalFile.txt")
 //        if (!fileName.exists()) {
 //            if(fileName.createNewFile()) {
 //                if (fileName.exists()) {
-//                    this.openFileOutput("externalFile.txt", Context.MODE_PRIVATE).use {
+//                    this.openFileOutput(fileName.name, Context.MODE_APPEND).use {
 //                        it.write("Hello External File".toByteArray())
 //                        Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
 //                    }
 //                }
 //            }
 //        }
-
-        //val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
-        val fileName = File(this.getExternalFilesDir(Environment.DIRECTORY_DOCUMENTS), "externalFile.txt")
-        if (!fileName.exists()) {
-            if(fileName.createNewFile()) {
-                if (fileName.exists()) {
-                    this.openFileOutput(fileName.name, Context.MODE_PRIVATE).use {
-                        it.write("Hello External File".toByteArray())
-                        Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
-                    }
-                }
-            }
+        } catch (e: Exception) {
+            e.printStackTrace()
         }
+
     }
 
     private fun externalDirectoryReadFile() {
@@ -285,3 +292,5 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
     }
 
 }
+
+// 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
