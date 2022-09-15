@@ -36,7 +36,9 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_CREATE_FOLDER, "External Directory Folder Create"),
         AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_WRITE_FILE_IN_FOLDER, "External Directory File Write"),
         AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_READ_FILE_IN_FOLDER, "External Directory File Read"),
-
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_CACHE_FILE_CREATE, "External CACHE FILE WRITE"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_READ_CACHE_FILE, "External CACHE FILE READ"),
+        AppDataAndFileTopic(FileTopic.EXTERNAL_STORAGE_DELETE_CACHE_FILE, "External Directory CACHE DELETE"),
 
 
         )
@@ -80,7 +82,7 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
             when(appDataAndFileTopic.topic) {
                 FileTopic.APP_SPECIFIC_FOLDER_CREATE -> createInternalFolder()
                 FileTopic.APP_SPECIFIC_FILE_CREATE_AND_WRITE -> createFileAndWriteInInternalFolder()
-                FileTopic.APP_SPECIFIC_FILE_AND_READ, -> createFileAndReadInternalFolder()
+                FileTopic.APP_SPECIFIC_FILE_AND_READ -> createFileAndReadInternalFolder()
                 FileTopic.APP_SPECIFIC_FILE_CREATE_IN_FOLDER -> createFileInInternalFolder()
                 FileTopic.APP_SPECIFIC_FILE_WRITE_IN_FOLDER -> writeInFileInFolderInInternalFolder()
                 FileTopic.APP_SPECIFIC_FILE_READ_IN_FOLDER -> readInFileInFolderInInternalFolder()
@@ -94,6 +96,9 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
                 FileTopic.EXTERNAL_STORAGE_CREATE_FOLDER -> externalDirectoryCreateFolder()
                 FileTopic.EXTERNAL_STORAGE_WRITE_FILE_IN_FOLDER -> externalDirectoryCreateAndWriteFile()
                 FileTopic.EXTERNAL_STORAGE_READ_FILE_IN_FOLDER -> externalDirectoryReadFile()
+                FileTopic.EXTERNAL_STORAGE_CACHE_FILE_CREATE-> externalDirectoryCreateCacheFile()
+                FileTopic.EXTERNAL_STORAGE_READ_CACHE_FILE -> externalDirectoryReadCacheFile()
+                FileTopic.EXTERNAL_STORAGE_DELETE_CACHE_FILE -> externalDirectoryDeleteCacheFile()
                 else -> {
                     Log.e(this.classLoader.toString(), "Some thing wrong")
                 }
@@ -243,15 +248,34 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
         }
     }
 
+
+    private fun isExternalStorageWritable(): Boolean {
+        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+    }
+
+    // Checks if a volume containing external storage is available to at least read.
+    private fun isExternalStorageReadable(): Boolean {
+        return Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED
+                || Environment.getExternalStorageState() == Environment.MEDIA_MOUNTED_READ_ONLY
+    }
+
     private fun externalDirectoryCreateAndWriteFile() {
         try {
+            if (isExternalStorageWritable()) {
+                Log.e("", "  Writable")
+            }
+
+            if (isExternalStorageReadable()) {
+                Log.e("", "  Readable")
+            }
+
             val content = "this si external file  written on devbcoe"
             //val externalFolder = File(this.getExternalFilesDir(null), "EXTERNAL_FOLDER")
             val fileName = File(applicationContext.getExternalFilesDir("MYFI"), "externalFile.txt")
             // if (!fileName.exists()) {
             //if(fileName.createNewFile()) {
             if (fileName.exists()) {
-                this.openFileOutput("externalFile.txt", Context.MODE_PRIVATE).use {
+                applicationContext.openFileOutput("externalFile.txt", Context.MODE_PRIVATE).use {
                     it.write(content.toByteArray())
                     it.close()
                     Toast.makeText(this, "External File Updated", Toast.LENGTH_SHORT).show()
@@ -287,6 +311,40 @@ class AppSpecificStorageActivity : AppCompatActivity(), AppDataAndFileClickListe
                     it.readText();
                 }
                 Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun externalDirectoryCreateCacheFile() {
+
+        val fileName = File(this.externalCacheDir, "externalCacheFile.txt")
+        if (fileName.exists()) {
+           // if (fileName.createNewFile()) {
+                this.openFileOutput(fileName.name, Context.MODE_PRIVATE).use {
+                    it.write("My name is Heshan".toByteArray())
+                    Toast.makeText(this, "External Cache File Created", Toast.LENGTH_SHORT).show()
+                }
+           // }
+        }
+    }
+
+    private fun externalDirectoryReadCacheFile() {
+        val fileName = File(this.externalCacheDir, "externalCacheFile.txt")
+        if (fileName.exists()) {
+            this.openFileInput(fileName.name).use { it ->
+                val text = it.bufferedReader().use {
+                    it.readText();
+                }
+                Toast.makeText(this, text, Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun externalDirectoryDeleteCacheFile() {
+        val fileName = File(this.externalCacheDir, "externalCacheFile.txt")
+        if (fileName.exists()) {
+            if (fileName.delete()) {
+                Toast.makeText(this, "Cache Deleted", Toast.LENGTH_SHORT).show()
             }
         }
     }
