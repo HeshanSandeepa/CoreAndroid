@@ -20,6 +20,7 @@ enum class FileTopic {
     EXTERNAL_STORAGE_READ_FILE_IN_FOLDER,
     EXTERNAL_STORAGE_CACHE_FILE_CREATE,
     EXTERNAL_STORAGE_READ_CACHE_FILE,
+    EXTERNAL_STORAGE_DELETE_CACHE_FILE,
 
 }
 data class AppDataAndFileTopic( val topic: FileTopic, val title: String)
